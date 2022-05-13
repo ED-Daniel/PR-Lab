@@ -1,3 +1,3 @@
-Sync time: 115475
-Parallel time: 232456
-Area: 6.99376e+06
+Sync time: 93012
+Parallel time: 391459
+Area: 2.78914e+06

@@ -9,7 +9,7 @@ int main() {
     std::mt19937 gen(rd());  // to seed mersenne twister.
     std::uniform_int_distribution<> dist(-100, 100);
 
-    for (size_t i = 0; i < 100000000; i++)
+    for (size_t i = 0; i < 10000000; i++)
     {
         out << dist(gen) << " " << dist(gen) << "\n";
     }

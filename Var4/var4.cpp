@@ -30,7 +30,6 @@ double findAreaParallel(const std::vector<std::pair<double, double>> & coordinat
     {
         sum1 += coordinates[i].first * coordinates[i + 1].second;
         sum2 += coordinates[i + 1].first * coordinates[i].second;
-        std::cout << "Calculating by " << omp_get_thread_num() << "th thread" << std::endl;
     }
 
     return 0.5 * abs(
@@ -41,8 +40,8 @@ double findAreaParallel(const std::vector<std::pair<double, double>> & coordinat
 }
 
 int main() {
-    std::ifstream input("test3.txt");
-    std::ofstream out("out(1000000).txt");
+    std::ifstream input("test1.txt");
+    std::ofstream out("out(10).txt");
 
     std::vector<std::pair<double, double>> coors;
 
