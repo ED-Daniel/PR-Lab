@@ -1,0 +1,3 @@
+Sync time: 0
+Parallel time: 13694
+Area: 6005.5

@@ -1,0 +1,2 @@
+Sync time: 132
+Parallel time: 7956
