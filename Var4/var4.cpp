@@ -22,13 +22,14 @@ double findArea(const std::vector<std::pair<double, double>> & coordinates) {
 }
 
 double findAreaParallel(const std::vector<std::pair<double, double>> & coordinates) {
-    double sum1 = 0;
+    double sum1 = 0; // Создаем переменные под суммы
     double sum2 = 0;
 
+    // Распараллеливаем for
     #pragma omp parallel for
     for (size_t i = 0; i < coordinates.size() - 1; i++)
     {
-        sum1 += coordinates[i].first * coordinates[i + 1].second;
+        sum1 += coordinates[i].first * coordinates[i + 1].second; // Считаем по формуле
         sum2 += coordinates[i + 1].first * coordinates[i].second;
     }
 
@@ -44,7 +45,7 @@ int main() {
     std::ofstream out("out(10).txt");
 
     std::vector<std::pair<double, double>> coors;
-
+    // Стандартное считывание из файла
     if (!input) {
         std::cerr << "No file found" << std::endl;
         return 1;
@@ -69,4 +70,5 @@ int main() {
 
     out << "Parallel time: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
     out << "Area: " << area_p << std::endl;
+    // Все выводы делаем в файл out
 }

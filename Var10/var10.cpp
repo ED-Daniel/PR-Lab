@@ -26,24 +26,29 @@ void findConsonants(const std::string & text) {
 }
 
 void findConsonantsParallel(const std::string & text) {
+    // Все согласные записаны в сет
     std::set<char> consonants {'q', 'w', 'r', 't', 'y', 'p', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'};
-    std::set<char> found;
+    std::set<char> found; // Создаем сет для найденных согласных
 
+    // Параллелим for
     #pragma omp parallel for
     for (size_t i = 0; i < text.size(); i++)
     {
+        // Если нашли согласную
         if (consonants.find(tolower(text[i])) != consonants.end()) {
-            found.insert(text[i]);
+            found.insert(text[i]); // То добавляем ее в сет
         }
     }
 
     std::set<char> diff;
+    // Высчитываем разницу двух сетов и записываем все в отдельный сет
     std::set_difference(consonants.begin(), consonants.end(), found.begin(), found.end(), std::inserter(diff, diff.end()));
 
-    for (auto i : diff) std::cout << i << " " << std::endl;
+    for (auto i : diff) std::cout << i << " " << std::endl; // Выводим на экран по заданию
     
 }
 
+// Вспомогательный метод для считывания всего текста в строку из файла
 std::string readFileIntoString(const std::string& path) {
     std::ifstream input_file(path);
     if (!input_file.is_open()) {
@@ -55,8 +60,8 @@ std::string readFileIntoString(const std::string& path) {
 }
 
 int main() {
-    std::ofstream out("out3.txt");
-    std::string test = readFileIntoString("test3.txt");
+    std::ofstream out("out1.txt");
+    std::string test = readFileIntoString("test1.txt");
     
     auto start = std::chrono::high_resolution_clock::now();
     findConsonants(test);

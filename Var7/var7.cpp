@@ -11,9 +11,10 @@ void func(std::vector<double> & numbers) {
 }
 
 void func_parallel(std::vector<double> & numbers) {
+    // Параллелим цикл for
     #pragma omp parallel for
     for (size_t i = 0; i < numbers.size(); i++)
-        numbers[i] = round(numbers[i] * 100) / 100.0;
+        numbers[i] = round(numbers[i] * 100) / 100.0; // Округление до 2-х знаков
 }
 
 int main() {
@@ -22,7 +23,7 @@ int main() {
 
     std::vector<double> data1;
     std::vector<double> data2;
-
+    // Стандартное считывание данных из файла
     if (!input) {
         std::cerr << "file not found" << std::endl;
         return 1;
@@ -53,6 +54,6 @@ int main() {
     }
     
     out << "..." << std::endl;
-
+    // Выводим все значения в файл out
     return 0;
 }
